@@ -1,4 +1,4 @@
-import { BrowserRouter , Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NavBar from './components/navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -12,9 +12,9 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route exact path='/' element={ItemListContainer}/>
-          <Route exact path='/categoria' element={ItemListContainer}/>
-          <Route exact path='/detalle' element={ItemDetailContainer}/>
+          <Route exact path='/' element={<ItemListContainer />} />
+          <Route exact path="/categoria/:categoriaId" element={<ItemListContainer />} />
+          <Route exact path="/detalle/:detalleId" element={<ItemDetailContainer />} />
         </Routes>
       </BrowserRouter>
     </>

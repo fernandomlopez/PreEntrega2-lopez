@@ -1,30 +1,30 @@
 import indumentaria from '../dataJson/indumentaria.json';
-import React, {useEffect, useState} from 'react';
-import ItemCount from './itemCount';
+import React, { useEffect, useState } from 'react';
 import ItemList from './itemList'
-import Title from './title';
+import { useParams } from 'react-router-dom';
 
 export const ItemListContainer = () => {
-    const [data, setData] = useState ([]); 
+    const [data, setData] = useState([]);
 
-    const getData = new Promise ((resolve) => {
+    const { categoriaId } = useParams();
+
+    const getData = new Promise((resolve) => {
         setTimeout(() => {
-         resolve(indumentaria);
-        }, 3000); 
-    }); 
+            resolve(indumentaria);
+        }, 3000);
+    });
     useEffect(() => {
-        getData.then(res => setData(res));
-    }, []);
-console.log(data)
-    const onAdd = (quantity) => {
-        console.log(`Compraste ${quantity} unidades`);
-    }
+        if (categoriaId) {
+            getData.then(res => setData(res.filter(indum => indum.categoria === categoriaId)));
+        } else {
+            getData.then(res => setData(res));
+        }
+    }, [categoriaId]);
+    console.log(data)
     return (
         <>
-        <Title greeting="Item List Container hecho!"/>
-        <ItemCount initial={1} stock={10} onAdd={onAdd} />
-        <ItemList data={data} /> 
+            <ItemList data={data} />
         </>
-        );
+    );
 }
 export default ItemListContainer;

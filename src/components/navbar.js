@@ -1,25 +1,26 @@
-import CartWidget from './cartWidget';
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/NavBar';
+import CartWidget from './cartWidget';
+import './navbar.css';
 
 export const NavBar = () => {
-    return (
-      <Navbar collapseOnSelect expand="lg" bg="dark" data-bs-theme="dark">
+  return (
+    <Navbar collapseOnSelect expand="lg" bg="dark" data-bs-theme="dark">
       <Container>
-        <Navbar.Brand to={'/'}>FM Market</Navbar.Brand>
+        <Navbar.Brand to={'/'}>FM Indum</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link to={'/'}>Home</Nav.Link>
-            <Nav.Link to={'/categoria'}>Camperas</Nav.Link>
-            <Nav.Link to={'/categoria'}>Camisacos</Nav.Link>
-            <Nav.Link to={'/categoria'}>Abrigos</Nav.Link>
-            <Nav.Link to={'/categoria'}>Buzos</Nav.Link>
-            <Nav.Link to={'/categoria'}>Remeras</Nav.Link>
-            <Nav.Link to={'/categoria'}>Pantalones</Nav.Link>
-            <Nav.Link to={'/cart'}>< CartWidget /></Nav.Link>
+          <Nav className="me-auto navPro">
+            <NavLink to='/'>Home</NavLink>
+            <NavLink to='/categoria/camperas'>Camperas</NavLink>
+            <NavLink to='/categoria/camisacos'>Camisacos</NavLink>
+            <NavLink to='/categoria/buzos'>Buzos</NavLink>
+            <NavLink to='/categoria/remeras'>Remeras</NavLink>
+            <NavLink to='/categoria/pantalones'>Pantalones</NavLink>
+            <NavLink to='/cart'>< CartWidget /></NavLink>
           </Nav>
           <Nav>
             <Nav.Link href="#deets">Contactanos</Nav.Link>
@@ -28,9 +29,9 @@ export const NavBar = () => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-    )
+  )
 }
 
-export default NavBar; 
+export default NavBar;
 
 

@@ -1,0 +1,24 @@
+.containerDetail {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 50px;
+}
+
+.detailContainImg {
+    height: 450px;
+    width: 450px;
+}
+
+.detail_img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    margin-left: 20px;
+}
