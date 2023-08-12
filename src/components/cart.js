@@ -1,12 +1,12 @@
-import React from "react"; 
-import { collection , getFirestore } from "firebase/firestore";
-import { Link } from 'react-router-dom';
+import React from "react";
 import { useCartContext } from "../context/cartcontext";
+import { addDoc, collection , getFirestore, serverTimestamp } from "firebase/firestore";
+import { Link } from 'react-router-dom';
 import ItemCart from "./itemcart/itemCart";
 
 
 const Cart = () => {
-    const { cart, totalPrecio } = useCartContext();
+    const { cart, totalPrice } = useCartContext();
 
     const order = {
         buyer: {
@@ -15,8 +15,8 @@ const Cart = () => {
             phone: "",
             address: ""
         },
-        items: cart.map( product => ({id: product.id,title: product.title,price: product.price, quantity: product.quantity})),
-        total: totalPrecio(),
+        Items: cart.map( product => ({id: product.id,title: product.title, price: product.price, quantity: product.quantity})),
+        total: totalPrice(),
         date: serverTimestamp()
     };
 
@@ -24,10 +24,7 @@ const Cart = () => {
         const db = getFirestore();
         const ordersCollection = collection(db, 'orders');
         addDoc(ordersCollection, order).then(({ id }) => console.log(id))
-    }
-
-
-
+    };
 
     if(cart.length === 0){
         return (
@@ -44,7 +41,7 @@ const Cart = () => {
             cart.map(product => <ItemCart key={product.id} product={product} />)
         }
         <p>
-            Total: {totalPrecio()}
+            Total: {totalPrice()}
             <button onClick={handleClick()}>Emitir Compra</button>
         </p>
         </>

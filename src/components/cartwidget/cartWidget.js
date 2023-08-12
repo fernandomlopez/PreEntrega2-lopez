@@ -7,7 +7,7 @@ export const CartWidget = () => {
 
     return (
         <>
-        <i className="bi bi-cart3"><span>0</span></i>
+        <i className="bi bi-cart3"></i>
         <span> {totalProducts() || '' }</span>
         </>
     );

@@ -4,9 +4,9 @@ import React from 'react';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import NavBar from './components/navbar';
-import ItemListContainer from './components/itemListContainer';
-import ItemDetailContainer from './components/itemDetailcontainer';
+import NavBar from './components/navbar/navbar';
+import ItemListContainer from './components/itemlistcontainer/itemListContainer';
+import ItemDetailContainer from './components/itemDetailContainer';
 import Cart from './components/cart';
 import {CartProvider} from './context/cartcontext';
 
