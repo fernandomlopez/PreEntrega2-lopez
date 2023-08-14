@@ -1,8 +1,9 @@
 import React from "react";
-import { useCartContext } from "../context/cartcontext";
+import "./cart.css"
+import { useCartContext } from "../../context/cartcontext";
 import { addDoc, collection , getFirestore, serverTimestamp } from "firebase/firestore";
 import { Link } from 'react-router-dom';
-import ItemCart from "./itemcart/itemCart";
+import ItemCart from "../itemcart/itemCart";
 
 
 const Cart = () => {
@@ -33,16 +34,16 @@ const Cart = () => {
             <Link to='/'>Hacer compras</Link>
             </>
         );
-    }
+    }   
 
     return (
         <>
         {
             cart.map(product => <ItemCart key={product.id} product={product} />)
         }
-        <p>
-            Total: {totalPrice()}
-            <button onClick={handleClick()}>Emitir Compra</button>
+        <p className="totalCompra">
+            Total:$ {totalPrice()}
+            <button onClick={handleClick}>Emitir Compra</button>
         </p>
         </>
     )

@@ -6,9 +6,11 @@ import './itemList.css'
 export const ItemList = ({ data }) => {
   return (
     <div className="induContain">
-      {data.map((indum) => (
+      {
+      data.map((indum) => (
         <Item key={indum.id} info={indum} />
-      ))}
+      ))
+      }
     </div>
   );
 };
