@@ -5,24 +5,16 @@ export const useCartContext = () => useContext(CartContext);
 
 export const CartProvider = ({children}) => {
     const [ cart, setCart] = useState([]);
-    
-    const addToCart = product => {
-        const productInCartIndex = cart.findIndex( item => item.id === product.id);
 
-        if(productInCartIndex >= 0){
-            const newCart = structuredClone(cart)
-            newCart[productInCartIndex].quantity += 1
-            return setCart(newCart)
+    const addProduct = (item, quantity) => {
+        if (isInCart(item.id)){
+            setCart(cart.map(product => {
+                return product.id === item.id ? { ...product, quantity: product.quantity + quantity } : product 
+            }));
+        } else {
+            setCart([...cart, {...item, quantity}]);
         }
-
-        setCart (prevState => ([
-            ...prevState, 
-            {
-                ...product,
-                quantity: 1
-            }
-        ]))
-    };
+    }
 
     const totalPrice = () => { 
         return cart.reduce ((prev,act) => prev + act.price * act.quantity, 0)
@@ -32,14 +24,17 @@ export const CartProvider = ({children}) => {
 
     const cleanCart = () => setCart([]);
 
+    const isInCart = (id) => cart.find(product => product.id === id) ? true : false;
+
     const  removeProduct = (id) => setCart (cart.filter(product => product.id !== id));
 
 
     return (
         <CartContext.Provider value={{
             cleanCart,
+            isInCart,
             removeProduct,
-            addToCart,
+            addProduct,
             totalPrice,
             totalProducts,
             cart

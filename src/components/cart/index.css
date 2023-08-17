@@ -1,0 +1,23 @@
+.totalCompra {
+    font-size: 22px;
+    font-weight: 500;
+    font-family:  system-ui;
+    margin: 0px 150px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.cartEmpty {
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cartEmpty p {
+    font-size: 25px;
+    font-family: system-ui, -apple-system;
+    font-weight: 700;
+}

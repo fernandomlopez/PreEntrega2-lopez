@@ -1,0 +1,7 @@
+.containFooter {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0px 0px 4px #adadad;
+}

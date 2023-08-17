@@ -1,0 +1,14 @@
+.propContain {
+    margin: 8px !important;
+}
+
+.prop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: system-ui;
+}
+
+.prop p {
+    font-weight: 300;
+}
